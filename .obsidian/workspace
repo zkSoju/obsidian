@@ -1,0 +1,100 @@
+{
+  "main": {
+    "id": "19a19fc96ecf18f0",
+    "type": "split",
+    "children": [
+      {
+        "id": "c19379d124f17712",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Bytes, Bits, and Hex.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "8f95c27f9eeaffa5",
+    "type": "split",
+    "children": [
+      {
+        "id": "1e753a65cc11694c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "df4f66ac353b89fa",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "53ac60b0aa60a205",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "58244adb201e77e5",
+    "type": "split",
+    "children": [
+      {
+        "id": "ae13e508e6a8d9c6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5f4a4baae8efebc9",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Bytes, Bits, and Hex.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "c19379d124f17712",
+  "lastOpenFiles": [
+    "Bytes, Bits, and Hex.md",
+    "Common Practices.md",
+    "Core Knowledge.md",
+    "EVM.md",
+    "Solidity Updates.md",
+    "assets/image 4.png",
+    "assets/image 4.png.md"
+  ]
+}
