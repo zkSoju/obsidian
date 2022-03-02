@@ -14,3 +14,5 @@
 - **linked libraries** are deployed separately on the blockchain and address of library is supplied to linked contract
 - **embedded libraries** are compiled within the contract
 
+Refer to the following page for a dive into version specific changes - [[Solidity Updates]].
+
