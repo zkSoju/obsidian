@@ -42,8 +42,8 @@ https://eips.ethereum.org/EIPS/eip-712
 This EIP aims to improve usability of off-chain message signing for use on-chain, since this a gas efficient method; however, currently signing messages are displayed as a hex string with little context about the items that make up the message.
 
 Reference [[Signatures and Hashing]] for an overview of Ethereum's signatures and hashing mechanisms and algorithms.
+![](assets/eip712-meta-p1.png)
 
-![[Pasted image 20220327192944.png|250]]
-![[Pasted image 20220327193307.png|250]]
+![](assets/eip712-meta-p2.png)
 
 

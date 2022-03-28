@@ -13,7 +13,7 @@ This page is for a general overview of each protocol. If you want a technical di
 	- Issue being that when people started to design novel implementations of their media it became difficult to replicate/remix it in the market
 - In V3, ZORA moved towards a permissionless auctionhouse protocol that is a permissionless onchain model that is functional with any 721 compliant NFT
 
-![[Pasted image 20220327170054.png]]
+![[assets/zora-uml.png]]
 -  Participant approves market module for media and funds which gives access for modules to facilitate transactions without further approvals. The market module has access to all the different currencies approved in the module, which it can use to delegate to different market modules.
 	- Example: You approved the market module for USDC and a particular NFT. When you make an offer, you don't need to reapprove USDC.
 	- Utilizes EIP712 (refer to [[EIPS]]) to improve UX and gas from multiple approvals

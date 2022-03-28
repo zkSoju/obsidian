@@ -25,7 +25,7 @@ Now that you know the inner workings of how to deploy a contract, let's explore 
 
 Here we will breakdown what is consumed by the Ethereum node / supplied into the data field of an Ethereum contract deployment transaction. The data supplied is the bytecode representation of the **init code fragrament** and the **contract code**.
 
-![[image 2.png]]
+![](assets/init-code.png)
 
 In order to better understand the following section, get familiar with [EVM opcodes](https://www.evm.codes/) One thing to note is that init code is not stored on the blockchain it is only consumed during deployment.
 

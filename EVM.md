@@ -17,7 +17,7 @@ The EVM (Ethereum Virtual Machine) is a stack based VM in comparison to register
 3. If JUMP, set PC to new target
 4. Else, increment PC 
 
-![s](assets/image%204.png)
+![](assets/image%204.png)
 
 Characteristics of a stack based machine:
 
@@ -87,7 +87,7 @@ Memory is a **volatile** region that exists only during smart contract execution
 
 Block header → Account state (visualization of smart contract storage in respect to account state and block headers)
 
-![[image.png]]
+![](assets/evm-illust.png)
 
 #### Call data
 

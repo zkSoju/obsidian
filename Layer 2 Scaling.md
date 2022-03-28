@@ -49,12 +49,11 @@ One might think that  a potential compromise would be to give the DNA sample to 
 
 Instead of relaying all transactions and across the network, we can have zero trust in the prover and still be able to verify the validity of it's new network state given the proof.
 
-![[Pasted image 20220326020242.png]]
-![[Pasted image 20220326020302.png]]
-
+![](assets/zk-stark-verify-p1.png)
+![](assets/zk-stark-verify-p2.png)
 ### AIR-FRI STARK
 
-![[Pasted image 20220326021334.png]]
+![](assets/zk-stark-airfri.png)
 
 1. Computational Integrity statement is fed to the prover
 2.  Arithmetization breaks up subject trying to prove into a bunch of polynomial contraints known as AIR (R1CS)
