@@ -7,8 +7,12 @@
         "id": "c19379d124f17712",
         "type": "leaf",
         "state": {
-          "type": "graph",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "README.md",
+            "mode": "source",
+            "source": false
+          }
         }
       }
     ],
@@ -65,6 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -84,15 +89,15 @@
   },
   "active": "c19379d124f17712",
   "lastOpenFiles": [
+    "README.md",
+    "EIPS.md",
     "EVM.md",
-    "Common Practices.md",
-    "assets/image.png",
-    "assets/image.png.md",
-    "assets/image 4.png",
-    "Pull Request Breakdowns.md",
-    "Smart Contracts & Opcodes.md",
-    "Repository Breakdowns.md",
-    "Cosmos.md",
-    "EIPS.md"
+    "Protocols.md",
+    "Miscellaneous.md",
+    "Layer 2 Scaling.md",
+    "MEV.md",
+    "Signatures and Hashing.md",
+    "assets/Pasted image 20220326020302.png",
+    "Cosmos.md"
   ]
 }

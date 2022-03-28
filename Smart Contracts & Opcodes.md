@@ -37,9 +37,9 @@ PC: Ox5, opcode: CALLVALUE // push supplied call value in wei
 PC: 0x6, opcode: DUP1 // duplicate top of stack (CALLWVALUE)
 PC: 0x7, opcode: ISZERO // pops top of stack and pushes 1 if 0, 0 otherwise
 PC: 0x8, opcode: PUSH2 0x0010 // pushes 2 byte 0x0010
-PC: Oxb, opcode: JUMPI // jumps to 0x0010 if stack[1] is 1 
-PC: Oxc, opcode: PUSH1 0x00 
-PC: Oxe, opcode: DUP1 
-PC: Oxf, opcode: REVERT // revert at stack[0] as memory location and stack[1] as reason (code here is entered when value was supplied in unpayable constructor)
+PC: 0xb, opcode: JUMPI // jumps to 0x0010 if stack[1] is 1 
+PC: 0xc, opcode: PUSH1 0x00 
+PC: 0xe, opcode: DUP1 
+PC: 0xf, opcode: REVERT // revert at stack[0] as memory location and stack[1] as reason (code here is entered when value was supplied in unpayable constructor)
 PC: 0x10, opcode: JUMPDEST // indicates valid jump destinations
 ```
