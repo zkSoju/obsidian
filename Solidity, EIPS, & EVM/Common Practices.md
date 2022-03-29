@@ -48,5 +48,5 @@ Preventative techniques
 - Use function modifiers
 - Strongly consider techniques when making calls to external contracts
 
-Refer to [[Repository Breakdowns]] for repository deep dives and just reading good codes.
-Refer to [[Pull Request Breakdowns]] for pull requests.
+Refer to [[../Code Review/Repository Breakdowns]] for repository deep dives and just reading good codes.
+Refer to [[../Code Review/Pull Request Breakdowns]] for pull requests.

@@ -99,5 +99,5 @@ Region that smart contract can return value after call set through return() reve
 
 [[Smart Contracts & Opcodes]]
 
-[[Bytes, Bits, and Hex]]
+[[Solidity, EIPS, & EVM/Bytes, Bits, and Hex]]
 

@@ -16,7 +16,8 @@ This page is for a general overview of each protocol. If you want a technical di
 ![[assets/zora-uml.png]]
 -  Participant approves market module for media and funds which gives access for modules to facilitate transactions without further approvals. The market module has access to all the different currencies approved in the module, which it can use to delegate to different market modules.
 	- Example: You approved the market module for USDC and a particular NFT. When you make an offer, you don't need to reapprove USDC.
-	- Utilizes EIP712 (refer to [[EIPS]]) to improve UX and gas from multiple approvals
+	- Utilizes EIP712 (refer to [[Solidity, EIPS, & EVM/EIPS]]) to improve UX and gas from multiple approvals
+	- Refer to [Repository Breakdowns](../Code%20Review/Repository%20Breakdowns.md) for a code breakdown
 - Code for V3 is deployed without upgradeability meaning once deployed it's immutable, user only has to trust source code on deployment which describes how the market place behaves
 	- Supports the thesis of a Hyperstructure, it is unstoppable, free, expansive, permissionless, and credibly neutral
 	- However, you can use governance and participation to migrate individual modules to give that sense of upgradeability (ex. bugs or new features) while the overarching structure remains trustworthy and immutable
