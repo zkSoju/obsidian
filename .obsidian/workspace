@@ -10,7 +10,7 @@
           "type": "markdown",
           "state": {
             "file": "Code Review/Repository Breakdowns.md",
-            "mode": "source",
+            "mode": "preview",
             "source": false
           }
         }
@@ -90,14 +90,14 @@
   "active": "c19379d124f17712",
   "lastOpenFiles": [
     "Code Review/Repository Breakdowns.md",
-    "Protocols/Protocols.md",
-    "README.md",
     "Solidity, EIPS, & EVM/EIPS.md",
+    "Protocols/Protocols.md",
     "Protocols/Cosmos.md",
-    "Solidity, EIPS, & EVM/EVM.md",
-    "Solidity, EIPS, & EVM/Smart Contracts & Opcodes.md",
-    "Solidity, EIPS, & EVM/Common Practices.md",
     "Protocols/Layer 2 Scaling.md",
-    "MEV.md"
+    "Code Review/Pull Request Breakdowns.md",
+    "Solidity, EIPS, & EVM/Bytes, Bits, and Hex.md",
+    "assets/zk-stark-verify-p2.png",
+    "assets/zk-stark-verify-p1.png",
+    "Solidity, EIPS, & EVM/EVM.md"
   ]
 }

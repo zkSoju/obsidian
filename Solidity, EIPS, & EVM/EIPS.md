@@ -3,7 +3,7 @@ https://eips.ethereum.org/EIPS/eip-165
 
 **How can I know which interfaces a contract supports (without knowing the exact source code)?**
 
-Creates a standard method to public and detect interfaces that smart contracts implement. 
+Creates a standard method to public and detect interfaces that smart contracts implement. Interface IDs are defined by the XOR of all function selectors defined in the ABI.
 
 ```solidity
 
@@ -19,7 +19,23 @@ interface ERC165 {
 
 ```
 
-- ERC721 and ERC1165 compliant contracts must implement the ERC165 interface
+- Implementing contracts of the ERC165 interface will have the above function that returns the required specifications 
+
+How to check if a contract implements ERC165:
+1.  The source contract makes a `STATICCALL` to the destination address with input data: `0x01ffc9a701ffc9a700000000000000000000000000000000000000000000000000000000` and gas 30,000. This corresponds to `contract.supportsInterface(0x01ffc9a7)`.
+2.  If the call fails or return false, the destination contract does not implement ERC-165.
+3.  If the call returns true, a second call is made with input data `0x01ffc9a7ffffffff00000000000000000000000000000000000000000000000000000000`.
+4.  If the second call fails or returns true, the destination contract does not implement ERC-165.
+5.  Otherwise it implements ERC-165.
+
+How to check if a contract implements a specific interface:
+1. Use the `supportsInterface()` method 
+2. If it does not support ERC165, then you will have to do it the old fashion way
+
+**Note:** With three or more supported interfaces (including ERC165 itself as a required supported interface), the mapping approach (in every case) costs less gas than the pure approach (at worst case).
+
+UPDATE: `type(ITest).interfaceId` = xor of all selectors and params, return type does not matter
+
 ---
 ## EIP 2612 (ERC20 EIP712 Permit Extension)
 https://eips.ethereum.org/EIPS/eip-2612
@@ -128,3 +144,42 @@ Returns:
 ### Ecosystem Adoption
 - Led to ERC20 transction-less token approvals in EIP-2612
 - Metamask utilizes this EIP-712 to provide users with a more readible output for signing
+
+--- 
+## EIP 2981 (NFT Royalties)
+https://eips.ethereum.org/EIPS/eip-2981
+
+**How can we provide a standardize way for all marketplace to interface with and manage royalty payouts that are baked into the contract?**
+
+```solidity
+   function royaltyInfo(
+        uint256 _tokenId,
+        uint256 _salePrice
+    ) external view returns (
+        address receiver,
+        uint256 royaltyAmount
+    );
+```
+
+This EIP allows contracts to signal royalty payout to NFT creator every time the item is sold or re-sold. The intended use case is for marketplaces that intend to support ongoing funding of creators and artists. This royalty payout is not baked into the transfer function because transfer does not signal a sale. Details like the payout mechanism and notifying recipient are not described in this EIP to keep things minimal and gas efficient (intended to be expanded upon in other EIPs).
+
+Incompatibility is an issue that plagued ERC20 royalty implementations and early NFT contracts making it difficult to implement across several marketplaces. A universal royalty standard is needed to provide ongoing funding for creators to promote adoption and innovation. This EIP only describes the royalty percentage and recipient, payouts are managed by the marketplace or platform utilizing this interface.
+
+Royalty payouts are always a percentage of sale price and it is considered an voluntary standard. If a contract implements ERC2981 but the marketplace decides not to support it, there will be zero royalty payouts. Buyers will assess royalty payouts as a factor of NFT purchasing decisions.
+
+### Specification
+
+- Implementers must payout `royaltyAmount` in the same currency as `_salePrice`
+- `royaltyInfo()` is unaware of the unit of exchange; therefore, the `royaltyAmount` or calculation of `royaltyAmount` should not be constant because that makes assumptions of the unit of exchange
+- For the reason above, the `royaltyAmount` **must** be a percantage of `_salePrice`
+	- Percentage may be reliant on other variables that don't make assumptions on unit of exchange
+		- Should not be reliant unpredictable variables like `block.timestamp`
+		- Could use the number of NFT transfers or `_tokenId` as a way to calculate `royaltyAmount`
+- Implementing marketplaces that respect the EIP **must** pay royalties no matter where sale occurred (OTC, on-chain, off-chain) and regardless of currency
+
+### Key Takeaways
+- Optional royalty payments - impossible to know which transfers are sales, so it is the responsibility of marketplace to voluntarily implement
+- Simple payments to single address -  it is up to the payment receiver to split fees, handle multiple recipients, taxes, etc because adding it into this EIP would make it gas-inefficient and difficult to cover all use cases
+- Royalty payment percentage calculation - `royaltyAmount` is calculated as a percentage of `_salePrice` and rather than returning a percentage and allowing marketplace to manage exact payout, a specific amount is returned to avoid marketplace disputes
+- Unit-less across marketplaces on-chain + off-chain
+- Universal payments

@@ -8,12 +8,12 @@ This page is for a general overview of each protocol. If you want a technical di
 
 ## ZORA
 ### Overview
+- In V1, it was permissionless in the sense that if the media source (contract) included the ZORA marketplace then you can trade without being hindered by a marketplace (ex. Opensea collection takedowns) because you own the marketplace and media
+	- Issue being that when people started to design novel implementations of their media it became difficult to replicate/remix the media in the market
 - Zora NFT v2 had marketplace contracts/interface baked into the NFT contracts of individual NFT contracts similar to Opensea
-- In V1, it was permissionless in the sense that if the media source (contract) included the ZORA market then you can trade without being hindered by a marketplace (ex. Opensea collection takedowns) because you own the marketplace and media
-	- Issue being that when people started to design novel implementations of their media it became difficult to replicate/remix it in the market
 - In V3, ZORA moved towards a permissionless auctionhouse protocol that is a permissionless onchain model that is functional with any 721 compliant NFT
-
-![[assets/zora-uml.png]]
+	- This is extremely beneficial because it makes it easy for other protocols (ex. Fractional) to integrate since everything operates on chain, while integrating Opensea would require significant resources to manage off-chain and on-chain interactions
+![](../assets/zora-uml.png)
 -  Participant approves market module for media and funds which gives access for modules to facilitate transactions without further approvals. The market module has access to all the different currencies approved in the module, which it can use to delegate to different market modules.
 	- Example: You approved the market module for USDC and a particular NFT. When you make an offer, you don't need to reapprove USDC.
 	- Utilizes EIP712 (refer to [[Solidity, EIPS, & EVM/EIPS]]) to improve UX and gas from multiple approvals
@@ -24,6 +24,8 @@ This page is for a general overview of each protocol. If you want a technical di
 - ZoraDAO registers the market module and mints and ownership NFT which can be utilized in interesting ways
 	- Module Fee Switch describes the state of the protocol / fee configuration which could be used to transfer the fee of the module to another DAO
 		- Offers economic incentive for ownership of the specific module 
+- **Key Features**
+	- Instant on-chain royalties
 
 ### What is a Hyperstructure?
 A **hyperstructure** can be defined as a crypto protocol that can run for free and forever without maintenance, interruption, or intermediaries. 
