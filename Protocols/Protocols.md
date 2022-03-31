@@ -24,8 +24,14 @@ This page is for a general overview of each protocol. If you want a technical di
 - ZoraDAO registers the market module and mints and ownership NFT which can be utilized in interesting ways
 	- Module Fee Switch describes the state of the protocol / fee configuration which could be used to transfer the fee of the module to another DAO
 		- Offers economic incentive for ownership of the specific module 
-- **Key Features**
+- **Key Features** (https://zine.zora.co/zora-v3)
 	- Instant on-chain royalties
+		- Uses EIP2981 (refer to [EIPS](../Solidity,%20EIPS,%20&%20EVM/EIPS.md)) and Royalty Registry to instantly and trustlessly pay out royalties 
+		- Complete royalty coverage
+	- Finder's Fee
+		- Curation is one of the most valuable actions (displaying something on homepage, embedding blog post, sharing on Twitter)
+		- Incentivizes market to find eventual buyer for their NFT
+		- To earn a finder's fee, include your address in UI or generate link
 
 ### What is a Hyperstructure?
 A **hyperstructure** can be defined as a crypto protocol that can run for free and forever without maintenance, interruption, or intermediaries. 

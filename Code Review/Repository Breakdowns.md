@@ -1,5 +1,62 @@
 ## Repository Breakdowns
 
+### Manifold Royalty Registry
+
+#### RoyaltyEngineV1.sol
+https://github.com/manifoldxyz/royalty-registry-solidity/blob/main/contracts/RoyaltyEngineV1.sol
+
+In order to support multiple royalty configurations beyond EIP2981 (to support multiple recipients and taxes), RoyaltyEngine saves the specific royalty configuration/address for each token addresses and does a manual check across all supported configurations if the address has not been seen before to determine recipients and amount.
+
+```solidity
+try IZoraOverride(royaltyAddress).convertBidShares(tokenAddress, tokenId) returns(address payable[] memory recipients_, uint256[] memory bps) {
+	// Support Zora override
+	
+	require(recipients_.length == bps.length);
+	return (recipients_, _computeAmounts(value, bps), ZORA, royaltyAddress, addToCache);
+} catch {}
+```
+
+Many other configurations do not support EIP2981, in that their royalty functions return a percentage requiring the use of `_computeAmounts` to calculate amounts.
+
+```solidity
+royaltyAddress = IRoyaltyRegistry(royaltyRegistry).getRoyaltyLookupAddress(tokenAddress);
+
+spec = _specCache[royaltyAddress];
+```
+
+If a passed in tokenAddress is not mapped to a spec defined by the following, 
+then it will skip the try/catch statements that are testing the royaltyAddress against each interface and go straight to the defined spec in `specCache`.
+
+```solidity
+int16 constant private NONE = -1;
+int16 constant private NOT_CONFIGURED = 0;
+int16 constant private MANIFOLD = 1;
+int16 constant private RARIBLEV1 = 2;
+int16 constant private RARIBLEV2 = 3;
+int16 constant private FOUNDATION = 4;
+int16 constant private EIP2981 = 5;
+int16 constant private SUPERRARE = 6;
+int16 constant private ZORA = 7;
+int16 constant private ARTBLOCKS = 8;
+```
+
+Use `this` to specify gas limit.
+
+```
+try this._getRoyaltyAndSpec{gas: 100000}(tokenAddress, tokenId, value) returns (address payable[] memory _recipients, uint256[] memory _amounts, int16 spec, address royaltyAddress, bool addToCache) {
+```
+
+The following function is used to clear cache when token royalty implementation is changed.
+
+```
+function invalidateCachedRoyaltySpec(address tokenAddress) public {
+	address royaltyAddress = IRoyaltyRegistry(royaltyRegistry).getRoyaltyLookupAddress(tokenAddress);
+	delete _specCache[royaltyAddress];
+}
+```
+
+#### RoyaltyRegistry.sol
+
 ### Zora V3
 
 #### ZoraModuleManager.sol
@@ -109,7 +166,7 @@ event ExchangeExecuted(address indexed userA, address indexed userB, ExchangeDet
 
 - Includes simple struct definition containing one component of an exchange and an event for indexing exchanges
 
-FeePayoutSupportV1 (Utility contract)
+#### FeePayoutSupportV1 (Utility contract)
 https://github.com/ourzora/v3/blob/main/contracts/common/FeePayoutSupport/FeePayoutSupportV1.sol
 
 ```solidity
@@ -159,27 +216,4 @@ function _handleProtocolFeePayout(uint256 _amount, address _payoutCurrency) inte
 
 - `protocolFeeSettings` references the NFT representation of the fee module which is used to fetch `protocolFee` and `feeRecipient`
 - this internal function is called first to extract fees for protocol then returns remaining funds from sale after paying fees
-
-```solidity
-/// @notice Pays out royalties for given NFTs
-/// @param _tokenContract The NFT contract address to get royalty information from
-/// @param _tokenId, The Token ID to get royalty information from
-/// @param _amount The total sale amount
-/// @param _payoutCurrency The ERC-20 token address to payout royalties in, or address(0) for ETH
-/// @param _gasLimit The gas limit to use when attempting to payout royalties. Uses gasleft() if not provided.
-/// @return The remaining funds after paying out royalties
-function _handleRoyaltyPayout(address _tokenContract, uint256 _tokenId, uint256 _amount, address _payoutCurrency, uint256 _gasLimit) internal returns (uint256, bool) {
-	// If no gas limit was provided or provided gas limit greater than gas left, just pass the remaining gas.
-	uint256 gas = (_gasLimit == 0 || _gasLimit > gasleft()) ? gasleft() : _gasLimit;
-	// External call ensuring contract doesn't run out of gas paying royalties
-	try this._handleRoyaltyEnginePayout{gas: gas}(_tokenContract, _tokenId, _amount, _payoutCurrency) returns (uint256 remainingFunds) {
-		// Return remaining amount if royalties payout succeeded
-		return (remainingFunds, true);
-	} catch {
-		// Return initial amount if royalties payout failed
-		return (_amount, false);
-	}
-}
-```
-
-- an optional gasLimit can be passed in to give module users of the library more control over how much gas to allocate to royalty payouts
+- an optional gasLimit on `handleRoyaltyPayout` can be passed in to give module users of the library more control over how much gas to allocate to royalty payouts
