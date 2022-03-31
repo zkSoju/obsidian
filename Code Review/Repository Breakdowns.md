@@ -1,8 +1,8 @@
-## Repository Breakdowns
+# Repository Breakdowns
 
-### Manifold Royalty Registry
+## Manifold Royalty Registry
 
-#### RoyaltyEngineV1.sol
+### RoyaltyEngineV1.sol
 https://github.com/manifoldxyz/royalty-registry-solidity/blob/main/contracts/RoyaltyEngineV1.sol
 
 In order to support multiple royalty configurations beyond EIP2981 (to support multiple recipients and taxes), RoyaltyEngine saves the specific royalty configuration/address for each token addresses and does a manual check across all supported configurations if the address has not been seen before to determine recipients and amount.
@@ -55,11 +55,11 @@ function invalidateCachedRoyaltySpec(address tokenAddress) public {
 }
 ```
 
-#### RoyaltyRegistry.sol
+### RoyaltyRegistry.sol
 
-### Zora V3
+## Zora V3
 
-#### ZoraModuleManager.sol
+### ZoraModuleManager.sol
 https://github.com/ourzora/v3/blob/main/contracts/ZoraModuleManager.sol
 
 1. Utilizes EIP-712 referenced in [EIPS](Solidity,%20EIPS,%20&%20EVM/EIPS.md) to sign a typed structured data constructed of a `domainSeparator` and `typeHash` and `encodedData`.
@@ -68,12 +68,12 @@ https://github.com/ourzora/v3/blob/main/contracts/ZoraModuleManager.sol
 4. Requires recovered address to be the address of the user the module is being approved for
 5. Approves individual modules using signature
 
-#### AsksV1_1.sol (Module contract)
+### AsksV1_1.sol (Module contract)
 https://github.com/ourzora/v3/blob/main/contracts/modules/Asks/V1.1/AsksV1_1.sol
 - Composed of all of the below utility contracts
 - Each tokenID per token address contains a singular ask
 
-#### OffersV1_1.sol (Module contract)
+### OffersV1_1.sol (Module contract)
 https://github.com/ourzora/v3/blob/main/contracts/modules/Offers/V1/OffersV1.sol
 
 ```solidity
@@ -105,7 +105,7 @@ mapping(address => mapping(uint256 => uint256[])) public offersForNFT;
 
 - Finders fee
 
-#### IncomingTransferSupportV1.sol (Utility contract)
+### IncomingTransferSupportV1.sol (Utility contract)
 https://github.com/ourzora/v3/blob/main/contracts/common/IncomingTransferSupport/V1/IncomingTransferSupportV1.sol
 
 ```solidity
@@ -136,7 +136,7 @@ function _handleIncomingTransfer(uint256 _amount, address _currency) internal {
 
 - `beforeBalance` and `afterBalance` check used to ensure standard ERC20 implementation since there are tokens that enforce a tax on transfer like SafeMoon
 
-ModuleNamingSupport
+####  ModuleNamingSupport.sol
 https://github.com/ourzora/v3/blob/main/contracts/common/ModuleNamingSupport/ModuleNamingSupportV1.sol
 
 - Contains a simple string for module name
@@ -166,7 +166,7 @@ event ExchangeExecuted(address indexed userA, address indexed userB, ExchangeDet
 
 - Includes simple struct definition containing one component of an exchange and an event for indexing exchanges
 
-#### FeePayoutSupportV1 (Utility contract)
+### FeePayoutSupportV1 (Utility contract)
 https://github.com/ourzora/v3/blob/main/contracts/common/FeePayoutSupport/FeePayoutSupportV1.sol
 
 ```solidity
