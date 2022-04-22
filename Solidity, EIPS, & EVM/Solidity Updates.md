@@ -21,3 +21,6 @@ JUMP
 [ROUTINE]
 JUMP
 ```
+
+---
+Prior to 0.8.x private variables with view was more space efficient than public variables; however, there is no difference now.

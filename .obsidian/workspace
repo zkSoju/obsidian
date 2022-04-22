@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "c19379d124f17712",
+        "id": "74525cecc4fd3538",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Code Review/Repository Breakdowns.md",
+            "file": "Protocols/Layer 2 Scaling.md",
             "mode": "source",
             "source": false
           }
@@ -40,7 +40,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "cairo",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -49,11 +49,12 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 264
   },
   "right": {
     "id": "58244adb201e77e5",
@@ -69,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Code Review/Repository Breakdowns.md",
+                "file": "Protocols/Layer 2 Scaling.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -79,25 +80,33 @@
                 "unlinkedCollapsed": true
               }
             }
+          },
+          {
+            "id": "308062875a8e513c",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 100
   },
-  "active": "c19379d124f17712",
+  "active": "74525cecc4fd3538",
   "lastOpenFiles": [
-    "Code Review/Repository Breakdowns.md",
-    "Protocols/Protocols.md",
-    "Solidity, EIPS, & EVM/EIPS.md",
-    "Protocols/Cosmos.md",
     "Protocols/Layer 2 Scaling.md",
-    "Code Review/Pull Request Breakdowns.md",
-    "Solidity, EIPS, & EVM/Bytes, Bits, and Hex.md",
-    "assets/zk-stark-verify-p2.png",
-    "assets/zk-stark-verify-p1.png",
-    "Solidity, EIPS, & EVM/EVM.md"
+    "MEV.md",
+    "Blockchain.md",
+    "Protocols/Cosmos.md",
+    "Protocols/GnosisSafe.md",
+    "Protocols/The Graph.md",
+    "Protocols/Protocols.md",
+    "Protocols/ZORA.md",
+    "Rust/Writing Automated Tests.md",
+    "Rust/Managing Growing Projects with Packages, Crates, and Modules.md"
   ]
 }

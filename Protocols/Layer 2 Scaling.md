@@ -1,4 +1,4 @@
-## Overview
+# Overview
 
 **How do we provide both scalability and integrity on the Blockchain?** Blockchains are secure decentralized and trustless. Transactions onchains are able to leverage the benefits of the blockchain; however, they are costly because of the blockchains capacity. On the flipside, transactions offchain through an operator are infinitely scalable, but they require users trusting the integrity the operator.
 
@@ -16,7 +16,7 @@ A politician is running for mayor and is offered the position provided that he/s
 
 One might think that  a potential compromise would be to give the DNA sample to third party to perform check, but that relies on users trusting the integrity of the third party. Another solution one might think of is to check every entry; however, the computation time is not manageable for large sizes.
 
-## zk-STARKS
+# zk-STARKS
 
 ### Starks, Cairo, and StarkNet
 - Why learn Cairo?
